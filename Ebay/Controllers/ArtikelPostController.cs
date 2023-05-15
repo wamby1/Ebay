@@ -1,4 +1,5 @@
-﻿using Ebay.Models;
+﻿using Ebay.Data;
+using Ebay.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -7,7 +8,14 @@ using System.IO;
 namespace Ebay.Controllers
 {
     public class ArtikelPostController : Controller
+        
     {
+        private readonly ApplicationDbContext _context;
+        public ArtikelPostController( ApplicationDbContext context)
+        {
+            _context = context;
+
+        }
         public IActionResult Index()
         {
             return View();
