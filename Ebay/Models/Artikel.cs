@@ -12,6 +12,7 @@ namespace Ebay.Models
         public string Description { get; set; }
         public int Preis { get; set; }
         public DateTime PostDate { get; set; }
+        public String ArtikelName { get; set; }
        
         public string OwnerUser { get; set; }
         public int gesehen { get; set; }

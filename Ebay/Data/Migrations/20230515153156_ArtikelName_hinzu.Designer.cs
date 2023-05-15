@@ -4,14 +4,16 @@ using Ebay.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ebay.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230515153156_ArtikelName_hinzu")]
+    partial class ArtikelName_hinzu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,15 +64,18 @@ namespace Ebay.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtikelId")
+                    b.Property<int?>("Artikelid")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("OwnerUser")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtikelId");
+                    b.HasIndex("Artikelid");
 
                     b.ToTable("artikelsImage");
                 });
@@ -82,7 +87,7 @@ namespace Ebay.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtikelId")
+                    b.Property<int?>("Artikelid")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Erstellungsdatum")
@@ -91,9 +96,12 @@ namespace Ebay.Data.Migrations
                     b.Property<string>("Inhalt")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OwnerUser")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtikelId");
+                    b.HasIndex("Artikelid");
 
                     b.ToTable("kommentar");
                 });
@@ -300,20 +308,16 @@ namespace Ebay.Data.Migrations
 
             modelBuilder.Entity("Ebay.Models.ArtikelImage", b =>
                 {
-                    b.HasOne("Ebay.Models.Artikel", "Artikel")
+                    b.HasOne("Ebay.Models.Artikel", null)
                         .WithMany("ArtikelImages")
-                        .HasForeignKey("ArtikelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Artikelid");
                 });
 
             modelBuilder.Entity("Ebay.Models.Kommentar", b =>
                 {
-                    b.HasOne("Ebay.Models.Artikel", "Artikel")
+                    b.HasOne("Ebay.Models.Artikel", null)
                         .WithMany("Kommentare")
-                        .HasForeignKey("ArtikelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Artikelid");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

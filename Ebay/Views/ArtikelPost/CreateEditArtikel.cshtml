@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Ebay.Models.Artikel
+
+
+<div class="container">
+    <form asp-controller="ArtikelPost" asp-action="CreateArtikel" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                <h2>Artikel Formular</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="id">ArtikelName</label>
+                    <input asp-for="ArtikelName" type="text" class="form-control" id="id" name="id">
+                </div>
+                <div class="form-group">
+                    <label for="artikelKategorie">Kategorie auswählen:</label>
+                    <select asp-for="ArtikelKategorie" class="form-control" id="artikelKategorie" name="artikelKategorie">
+                        <option value="">Bitte wählen</option>
+                        <option value="geräte">Geräte</option>
+                        <option value="kleidung">Kleidung</option>
+                        <option value="Bücher">Bücher</option>
+                        <!-- Weitere Optionen hinzufügen -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Beschreibung:</label>
+                    <textarea asp-for="Description" class="form-control" id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="preis">Preis:</label>
+                    <input asp-for="Preis" type="number" class="form-control" id="preis" name="preis">
+                </div>
+                <div class="form-group">
+                    <label for="artikelLocation">Artikelstandort:</label>
+                    <input asp-for="ArtikelLocation" type="text" class="form-control" id="artikelLocation" name="artikelLocation">
+                </div>
+
+                <div class="form-group">
+                    <label for="artikelImage">Artikelbild:</label>
+                    <input type="file"  class="form-control-file" id="artikelImage" name="files" multiple>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Artikel speichern</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
