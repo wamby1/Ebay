@@ -5,62 +5,33 @@
     <h1 class="display-4" clas>Alle Artikel</h1>
 </div>
 
-@*<div class="container text-center">
-    <div class="row row-cols-3">
-        @{
-            foreach (Artikel artikel in Model)
-            {
 
-                <div class="card col vr" style="width:25%;">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @{
+        foreach (Artikel artikel in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"> @artikel.ArtikelName</h5>
-                        <p class="card-text">@artikel.Description</p>
+                        <h5 class="card-title">@artikel.ArtikelName</h5>
+                        <p class="card-text"> @artikel.Description.</p>
                     </div>
+
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">seit @artikel.PostDate </li>
+
                         <li class="list-group-item">@artikel.Preis Euro</li>
 
                     </ul>
-                    <div class="card-body">
-                   
+
+                    <div class="card-footer">
                         <a asp-route-id="@artikel.id" asp-controller="ArtikelPost" asp-action="CreateEditArtikel" class="card-link btn btn-warning">Edit</a>
                         <a asp-route-id="@artikel.id" asp-controller="ArtikelPost" asp-action="DeleteArtikel" class="card-link btn btn-danger">Delete</a>
-                       
                     </div>
                 </div>
+            </div>
 
-
-            }
         }
-    </div>
-</div>*@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @{
-            foreach (Artikel artikel in Model)
-            {
-    <div class="col">
-        <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                        <h5 class="card-title">@artikel.ArtikelName</h5>
-                        <p class="card-text"> @artikel.Description.</p>
-            </div>
-                    
-                        <ul class="list-group list-group-flush">
-                        
-                            <li class="list-group-item">@artikel.Preis Euro</li>
+    }
 
-                        </ul>
-                    
-             <div class= "card-footer">
-                <a asp-route-id="@artikel.id" asp-controller="ArtikelPost" asp-action="CreateEditArtikel" class="card-link btn btn-warning">Edit</a>
-                <a asp-route-id="@artikel.id" asp-controller="ArtikelPost" asp-action="DeleteArtikel" class="card-link btn btn-danger">Delete</a>
-            </div>
-        </div>
-    </div>
-    
-            }
-     }
-    
 </div>
