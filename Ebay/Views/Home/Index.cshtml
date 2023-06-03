@@ -2,6 +2,30 @@
     ViewData["Title"] = "Artikels";
 }
 
-<div class="text-center">
+@*<div class="text-center">
    <h1 class="display-4"clas>Alle Artikel</h1>
 </div>
+@{
+    foreach(Artikel artikel in Model)
+    {
+        <div class="grid text-center">
+            <div class="card g-col-6" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> @artikel.ArtikelName</h5>
+                    <p class="card-text">@artikel.Description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">seit @artikel.PostDate ve</li>
+                    <li class="list-group-item">@artikel.Preis</li>
+                    
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link btn-warning">Edit</a>
+                    <a href="#" class="card-link btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        
+    }
+}*@
